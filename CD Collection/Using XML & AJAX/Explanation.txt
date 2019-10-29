@@ -1,0 +1,1 @@
+Creating an xml page for CD Collection and using AJAX to retrieve its contents and display it as HTML Table.
