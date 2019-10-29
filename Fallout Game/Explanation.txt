@@ -1,0 +1,20 @@
+Here, we have created a website using Html and Css as a simulation of popular hacking mini game from Fallout.
+It creates a 4 digit code using random digits from 0 to 5 (each digit used only once).
+It allows user 5 attempts to try and guess the code.
+The result is a combination of characters O, X and V
+WHERE:-
+O - correct digit in correct place,
+X - wrong digit,
+V - correct digit in wrong place.
+e.g. In this code, the Given code's value is assumed to be = 3251.
+
+    "5 ATTEMPTS LEFT...",
+    "CODE : 1234",
+    "SYS  : VOVX",
+    "4 ATTEMPTS LEFT...",
+    "CODE : 3215",
+    "SYS  : OOVV",
+    "3 ATTEMPTS LEFT...",
+    "CODE : 3251",
+    "SYS  : OOOO",
+    "SUCCESS"
