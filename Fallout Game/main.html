@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FALLOUT</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style type="text/css">
+            body {
+                color: white;
+                background-color: #323232;
+            }
+            input {
+                color: #323232;
+            }
+        </style>
+
+        <script>
+            let iter= 5;
+            function getResult()
+            {
+                document.getElementById("result").value = "";
+                document.getElementById("out").value = "";
+                let x= document.getElementById("code").value;
+                let y= document.getElementById("user").value;
+                for(let i=0; i<4; i++)
+                {
+                    let count=0;
+                    for(let j=0; j<4; j++)
+                    {
+                        if(y[i]===x[i])
+                        {
+                            document.getElementById("out").value+= "O";
+                            count=1;
+                            break;
+                        }
+                        else if(y[i]===x[j])
+                        {
+                            document.getElementById("out").value+="V";
+                            count=1;
+                            break;
+                        }
+                    }
+                    if(count===0)
+                        document.getElementById("out").value+="X";
+                }
+
+                if(document.getElementById("out").value!=="OOOO" && iter>0)
+                {
+                    document.getElementById("result").value += (iter + " attempts left");
+                    iter--;
+                }
+                else if(document.getElementById("out").value==="OOOO" && iter>0)
+                {
+                    document.getElementById("result").value += "SUCCESS";
+                }
+                else if(iter===0)
+                {
+                    document.getElementById("result").value += "FAILED";
+                    alert("No attempts left!");
+                    document.location.reload(true);
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>FALLOUT GAME <small>Hack it if you can!</small></h1>
+            </div>
+            <form class="navbar-form navbar-left" method="post">
+                <label for="code">Given code: </label>
+                <input type="text" name="code" id="code" value="3215" disabled>
+                <br><br>
+                <label for="user">Input code:</label>
+                <input type="text" name="user" id="user">
+                <br> <br>
+                <input type="button" value="OK" onclick="getResult()">
+                <br> <br>
+                <label for="out">Output: </label>
+                <input type="text" name="out" id="out" disabled>
+                <br><br>
+                <input type="text" name="result" id="result" disabled>
+            </form> 
+        </div>
+    </body>
+</html>
