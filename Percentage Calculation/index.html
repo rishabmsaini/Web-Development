@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Percentage Calculation</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+    function myFunction() 
+    {
+      var x,y,z,i,c=0,s=0,text,check=false;
+
+      x = document.getElementById("subject1").checked;
+      y = document.getElementById("subject2").checked;
+      z = document.getElementById("subject3").checked;
+      if(x!=true && y!=true && z!=true)
+      {
+        text = "*please select at least one subject.";
+        document.getElementById("demo").innerHTML = text;
+        check=false;
+      }
+      else
+        check=true;
+
+      x = document.getElementById("m1").value;
+      y = document.getElementById("m2").value;
+      z = document.getElementById("m3").value;
+      if( (isNaN(x)||x<0||x>100) || (isNaN(y)||y<0||y>100) || (isNaN(z)||z<0||z>100) )
+      {
+        text = "*please enter valid marks between 0-100.";
+        document.getElementById("demo").innerHTML = text;
+        check=false;
+      }
+      else
+        check=true;
+
+      if(check==true)
+      {
+        x = document.getElementById("subject1").checked;
+        y = document.getElementById("subject2").checked;
+        z = document.getElementById("subject3").checked;
+        if(x==true) x = document.getElementById("m1").value;
+        else x=0;
+        if(y==true) y = document.getElementById("m2").value;
+        else y=0;
+        if(z==true) z = document.getElementById("m3").value;
+        else z=0;
+        var marks = [x, y, z];
+        for(i=0;i<marks.length;i++)
+          if(marks[i]!=0)
+          {
+            s=s+Number(marks[i]);
+            c++;
+          }
+        f=document.getElementById("first").value;
+        l=document.getElementById("last").value;
+        var p;
+        p=(s*100)/(c*100);
+        window.alert("Hello "+f+" "+l+" !\nYour Percentage is: "+p+"%");
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <h2><strong><u>JavaScript Percentage Calculation</u></strong></h2>
+  
+  <form id="first_form" method="post" action="">
+  <h3>
+    <label for="first">First Name: </label>
+    <input type="text" name="first" id="first" placeholder="First name">
+    <br><br>
+
+    <label for="last">Last Name: </label>
+    <input type="text" name="last" id="last" placeholder="Last name">
+    <br><br>
+
+    <label for="subject">Subjects: </label><br><br>
+  
+    <input type="checkbox" id="subject1" />Physics
+    <input type="number" id="m1" placeholder="Physics marks" disabled />
+    <script>
+    document.getElementById('subject1').onchange = function()
+    {
+      document.getElementById('m1').disabled = !this.checked;
+    };
+    </script>
+    <br>
+
+    <input type="checkbox" id="subject2">Chemistry
+    <input type="number" id="m2" placeholder="Chemistry marks" disabled />
+    <script>
+    document.getElementById('subject2').onchange = function()
+    {
+      document.getElementById('m2').disabled = !this.checked;
+    };
+    </script>
+    <br>
+
+    <input type="checkbox" id="subject3">Maths
+    <input type="number" id="m3" placeholder="Maths marks" disabled />
+    <script>
+      document.getElementById('subject3').onchange = function()
+      {
+        document.getElementById('m3').disabled = !this.checked;
+      };
+    </script>
+    <br>
+  </h3>
+    <button class="btn" type="button" onclick="myFunction()">Submit</button>
+  </form>
+  <p class="demo" id="demo"></p>
+</body>
+</html>
